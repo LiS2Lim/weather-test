@@ -1,6 +1,6 @@
-const Result = () => {
+const Result = (props:any) => {
 	return (
-		<div>result</div>
+		<div>{props.result.location.name}</div>
 	);
 };
 

@@ -5,18 +5,20 @@ import Form from './components/Form';
 import Result from './components/Result';
 
 function App() {
-	type FormPropsType = {
-		city: string;
-		setCity: React.Dispatch<React.SetStateAction<string>>;
-	};
-	
 	const [city, setCity] = useState<string>("");
-	
+	const [result, setResult] = useState<any>("");
+	const getWeater = (e:any) => {
+		e.preventDefault();
+		fetch(`http://node.li-lim.net/weather/${ city }`)
+		.then(res => res.json())
+		.then(data => setResult(data))
+	}
+
 	return (
 		<div className="App">
 			<Title />
-			<Form city={ city } setCity={ setCity }/>
-			<Result city={ city } setCity={ setCity }/>
+			<Form setCity={ setCity } getWeater={ getWeater }/>
+			<Result result={ result }/>
 		</div>
 	);
 }
