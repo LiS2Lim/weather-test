@@ -1,6 +1,17 @@
-const Result = (props:any) => {
+type typeResult = {
+	result: {
+		name:string
+		country:string
+	}
+}
+
+const Result = (props:typeResult) => {
 	return (
-		<div>{props.result.location.name}</div>
+		<div>
+			<h2>Result</h2>
+			{ props.result.name }
+			{ props.result.country }
+		</div>
 	);
 };
 
